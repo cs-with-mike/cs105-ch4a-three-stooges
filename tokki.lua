@@ -3,7 +3,7 @@
 
 -- Global declarations
 -- Variables
-
+nextToken = nil
 
 
 
@@ -23,6 +23,8 @@ DIV_OP = 24
 LEFT_PAREN = 25
 RIGHT_PAREN = 26
 
+-- in place of EOF character
+
 -- used in place of a switch statement
 lookupTable = {
 	'(' = LEFT_PAREN,
@@ -32,3 +34,7 @@ lookupTable = {
 	'*' = MULT_OP,
 	'/' = DIV_OP,
 }
+
+function lookup(char)
+	nextToken = lookupTable[char]
+
