@@ -3,7 +3,7 @@
 
 -- Global declarations
 -- Variables
-
+nextToken = nil
 
 
 
@@ -23,6 +23,8 @@ DIV_OP = 24
 LEFT_PAREN = 25
 RIGHT_PAREN = 26
 
+-- in place of EOF character
+
 -- used in place of a switch statement
 lookupTable = {
 	'(' = LEFT_PAREN,
@@ -33,14 +35,25 @@ lookupTable = {
 	'/' = DIV_OP,
 }
 
+
+function lookup(char)
+	if lookupTable[char] == nil then
+		return EOF;
+	end
+	return lookupTable[char]
+end
+
+
 function addChar(lexeme, lexLen, nextChar)
-	if lexLen <= 98
+	if lexLen <= 98 then
 		lexeme[lexLen + 1] = nextChar
 		lexLen = lexLen + 1
 		lexeme[lexLen + 1] = '\0'
 	else
 		print("Error - Lexeme is too long")
 	end
+end
+
 
 function getChar()
 	local nextChar = io.read(1)
