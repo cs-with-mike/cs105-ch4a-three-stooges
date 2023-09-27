@@ -35,6 +35,35 @@ lookupTable = {
 	'/' = DIV_OP,
 }
 
-function lookup(char)
-	nextToken = lookupTable[char]
 
+function lookup(char)
+	if lookupTable[char] == nil then
+		return EOF;
+	end
+	return lookupTable[char]
+end
+
+
+function addChar(lexeme, lexLen, nextChar)
+	if lexLen <= 98 then
+		lexeme[lexLen + 1] = nextChar
+		lexLen = lexLen + 1
+		lexeme[lexLen + 1] = '\0'
+	else
+		print("Error - Lexeme is too long")
+	end
+end
+
+
+function getChar()
+	local nextChar = io.read(1)
+	if nextChar == nil then
+		charClass = EOF
+	elseif string.match(nextChar, "%a") then
+		charClass = LETTER
+	elseif string.match(nextChar, "%d") then
+		charClass = DIGIT
+	else
+		charClass = UNKNOWN
+	end
+end
