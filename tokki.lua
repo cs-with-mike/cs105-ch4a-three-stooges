@@ -32,3 +32,23 @@ lookupTable = {
 	'*' = MULT_OP,
 	'/' = DIV_OP,
 }
+
+function addChar(lexeme, lexLen, nextChar)
+	if lexLen <= 98
+		lexeme[lexLen + 1] = nextChar
+		lexLen = lexLen + 1
+		lexeme[lexLen + 1] = '\0'
+	else
+		print("Error - Lexeme is too long")
+	end
+
+function getChar()
+	local nextChar = io.read(1)
+	if nextChar == nil then
+		charClass = EOF
+	elseif string.match(nextChar, "%a") then
+		charClass = LETTER
+	elseif string.match(nextChar, "%d") then
+		charClass = DIGIT
+	else
+		charClass = UNKNOWN
