@@ -54,3 +54,9 @@ function getChar()
 		charClass = UNKNOWN
 	end
 end
+
+function getNonBlank()
+	while string.match(nextChar, "%s") do
+		nextChar = getChar()
+	end
+end
