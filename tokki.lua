@@ -52,3 +52,5 @@ function getChar()
 		charClass = DIGIT
 	else
 		charClass = UNKNOWN
+	end
+end
