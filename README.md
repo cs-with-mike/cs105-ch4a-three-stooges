@@ -4,9 +4,9 @@ Westmont College CS 105 Fall 2023
 Chapter 4 Assignment A
 
 ## Author Information
-- **Boaty McBoatface** bmcboatface@westmont.edu
-- **Thomas McTankengine** tmctankengine@westmont.edu
-- **Ovenly McEasybake** omceasybake@westmont.edu
+- **Levi Wicks** lwicks@westmont.edu
+- **David Ponce De Leon** dponcedeleon@westmont.edu
+- **Alexis Leon** alleon@westmont.edu
 
 ## Overview
 (TODO: Describe in a sentence or two what this assignment is.)
