@@ -10,28 +10,19 @@ LETTER = 0
 DIGIT = 1
 UNKNOWN = 99
 
--- Token codes
-INT_LIT = 10
-IDENT = 11
-ASSIGN_OP = 20
-ADD_OP = 21
-SUB_OP = 22
-MULT_OP = 23
-DIV_OP = 24
-LEFT_PAREN = 25
-RIGHT_PAREN = 26
-
 -- used in place of a switch statement
 lookupTable = {
-	['('] = LEFT_PAREN,
-	[')'] = RIGHT_PAREN,
-	['+'] = ADD_OP,
-	['-'] = SUB_OP,
-	['*'] = MULT_OP,
-	['/'] = DIV_OP,
+	['('] = "LEFT_PAREN",
+	[')'] = "RIGHT_PAREN",
+	['+'] = "ADD_OP",
+	['-'] = "SUB_OP",
+	['*'] = "MULT_OP",
+	['/'] = "DIV_OP",
+	['='] = "ASSIGN_OP",
 }
 
-
+-- @param a single line instruction
+-- @returns a lexed version of the instruction 
 function lex(infile)
 	-- attempts to open file, throws error if nil
 	local f = assert(io.open(infile, "r"));
@@ -48,7 +39,7 @@ function lex(infile)
 		local lexeme = "";
 		-- if the next character is a letter
 		if char:match("%a") then 
-			nextToken = IDENT
+			nextToken = "IDENT"
 			repeat 
 				lexeme = lexeme .. char;
 				char = f:read(1);
@@ -57,7 +48,7 @@ function lex(infile)
 				end
 			until not (char:match("%a") or char:match("%d")) 
 		elseif char:match("%d") then
-			nextToken = INT_LIT
+			nextToken = "INT_LIT";
 			repeat
 				lexeme = lexeme .. char;
 				char = f:read(1);
@@ -69,11 +60,13 @@ function lex(infile)
 			lexeme, nextToken = char, lookupTable[char];
 			char = f:read(1);
 		end
-		print("Next token is: " .. nextToken .. ", Next lexeme is: " .. lexeme);
+		print(string.format("Next token is: %11s | Next lexeme is %s", nextToken, lexeme));
 	end
-	print("Next token is: -1, Next lexeme is: EOF");
+	print(string.format("Next token is: %11s | Next lexeme is %s", "EOF", "EOF"));
 	f:close();
-end 
+end
+
+
 -- main loop
 function main ()
 	lex(arg[1]);
