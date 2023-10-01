@@ -3,73 +3,73 @@
 
 -- Global declarations
 -- Variables
-nextToken = nil
-
-
+nextToken = ""
 
 -- Character classes
 LETTER = 0 
 DIGIT = 1
 UNKNOWN = 99
 
--- Token codes
-INT_LIT = 10
-IDENT = 11
-ASSIGN_OP = 20
-ADD_OP = 21
-SUB_OP = 22
-MULT_OP = 23
-DIV_OP = 24
-LEFT_PAREN = 25
-RIGHT_PAREN = 26
-
--- in place of EOF character
-
 -- used in place of a switch statement
 lookupTable = {
-	'(' = LEFT_PAREN,
-	')' = RIGHT_PAREN,
-	'+' = ADD_OP,
-	'-' = SUB_OP,
-	'*' = MULT_OP,
-	'/' = DIV_OP,
+	['('] = "LEFT_PAREN",
+	[')'] = "RIGHT_PAREN",
+	['+'] = "ADD_OP",
+	['-'] = "SUB_OP",
+	['*'] = "MULT_OP",
+	['/'] = "DIV_OP",
+	['='] = "ASSIGN_OP",
 }
 
+-- @param a single line instruction
+-- @returns a lexed version of the instruction 
+function lex(infile)
+	-- attempts to open file, throws error if nil
+	local f = assert(io.open(infile, "r"));
+	local char = f:read(1);
+	-- main logic loop
+	while not (char == nil) do
+		-- bypass whitespace
+		if char == " " then
+			repeat 
+				char = f:read(1)
+			until not (char == " ")
+		end 
 
-function lookup(char)
-	if lookupTable[char] == nil then
-		return EOF;
+		local lexeme = "";
+		if char:match("%a") then -- if the next character is a letter
+			nextToken = "IDENT"
+			repeat -- loop until end of lexeme (when the next char is not a letter or digit)
+				lexeme = lexeme .. char;
+				char = f:read(1);
+				if char == nil then
+					break
+				end
+			until not (char:match("%a") or char:match("%d")) 
+		elseif char:match("%d") then -- if the next character is a digit
+			nextToken = "INT_LIT";
+			repeat -- loop until end of lexeme (when the next character is not a digit)
+				lexeme = lexeme .. char;
+				char = f:read(1);
+				if char == nil then
+					break
+				end
+			until not (char:match("%d")) 
+		else -- use the lookup table
+			lexeme, nextToken = char, lookupTable[char];
+			char = f:read(1);
+		end
+		print(string.format("Next token is: %11s | Next lexeme is %s", nextToken, lexeme));
 	end
-	return lookupTable[char]
+	-- end of file
+	print(string.format("Next token is: %11s | Next lexeme is %s", "EOF", "EOF"));
+	f:close();
 end
 
 
-function addChar(lexeme, lexLen, nextChar)
-	if lexLen <= 98 then
-		lexeme[lexLen + 1] = nextChar
-		lexLen = lexLen + 1
-		lexeme[lexLen + 1] = '\0'
-	else
-		print("Error - Lexeme is too long")
-	end
+-- main loop
+function main ()
+	lex(arg[1]);
 end
 
-
-function getChar()
-	local nextChar = io.read(1)
-	if nextChar == nil then
-		charClass = EOF
-	elseif string.match(nextChar, "%a") then
-		charClass = LETTER
-	elseif string.match(nextChar, "%d") then
-		charClass = DIGIT
-	else
-		charClass = UNKNOWN
-	end
-end
-
-function getNonBlank()
-	while string.match(nextChar, "%s") do
-		nextChar = getChar()
-	end
-end
+main();
