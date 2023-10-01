@@ -1,8 +1,8 @@
 #!/bin/bash
 # Authors:
-#  - Boaty McBoatface, bmcboatface@westmont.edu
-#  - Thomas McTankengine, tmctankengine@westmont.edu
-#  - Ovenly McEasybake, omceasybake@westmont.edu
+#  - Levi Wicks, lwicks@westmont.edu
+#  - David Ponce De Leon, dponcedeleon@westmont.edu
+#  - Alexis Leon, alleon@westmont.edu
 
 # Run any commands necessary to set up your language's runtime environment here.
 # If the runtime is expected to be present on Ubuntu by default, then do nothing.
