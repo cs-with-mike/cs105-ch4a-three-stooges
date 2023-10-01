@@ -9,10 +9,14 @@ Chapter 4 Assignment A
 - **Alexis Leon** alleon@westmont.edu
 
 ## Overview
-(TODO: Describe in a sentence or two what this assignment is.)
+This program is a lexical analyzer written for the language Tokki. The lexer takes in a file as input and returns the formatted tokens. 
 
 ## Design Notes
-(TODO: Write any notable design decisions you made as you were working on this assignment.)
+When developing the lexer we chose to deviate from the books implementation and put it all in a single function. Instead of creating a lookup function which utilizes switch statements, we took advantage of Luas *table* datatype. 
 
 ## Lessons Learned
-(TODO: Describe any lessons learned while you were working on this assignment.)
+While creating the Tokki lexer in Lua, we learned:
+- How basic file IO works in Lua
+- Basic string formatting, and concatenation
+- The difference between calling static, and non-static methods on objects (using either the . or : operator)
+- What different basic expressions evaluate to 
