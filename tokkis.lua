@@ -90,7 +90,7 @@ function factor()
                                 error()
                         end
                 else
-                        error()
+                        print("Error")
 
                 
                 end
