@@ -57,14 +57,46 @@ function lex(f)
 end
 
 function expr()
+        print(string.format("Enter %s\n", expr))
 
+        term()
+
+        while nextToken == ADD_OP or nextToken == SUB_OP do
+                lex()
+                term()
+        end
 end
 
 function term()
-
+        print(string.format("Enter %s\n", term))
+        factor()
+        while nextToken == MULT_OP or nextToken == DIV_OP do
+                lex()
+                factor()
+        end
 end
 
 function factor()
+        print(string.format("Enter %s\n", factor))
+        if nextToken == IDENT or nextToken == INT_LIT then
+                lex()
+        else
+                if nextToken == LEFT_PAREN then
+                        lex()
+                        expr()
+                        if nextToken ==  RIGHT_PAREN then
+                                lex()
+                        else
+                                error()
+                        end
+                else
+                        error()
+
+                
+                end
+        end
+        
+        print(string.format("Exit %s\n", factor))
 
 end
 
