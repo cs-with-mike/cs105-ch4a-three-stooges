@@ -87,7 +87,7 @@ function factor()
                         if nextToken ==  RIGHT_PAREN then
                                 lex()
                         else
-                                error()
+                                print("Error")
                         end
                 else
                         print("Error")
