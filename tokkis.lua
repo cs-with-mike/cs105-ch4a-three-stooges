@@ -4,6 +4,7 @@
 -- Global declarations
 -- Variables
 nextToken = ""
+f = assert(io.open(arg[1], "r")); -- attempts to open file, throws error if nil
 
 -- Character classes
 LETTER = 0
@@ -21,7 +22,7 @@ lookupTable = {
         ['='] = "ASSIGN_OP",
 }
 
-function lex(f)
+function lex()
         -- bypass whitespace
         if char == " " then
                 repeat
@@ -57,8 +58,7 @@ function lex(f)
 end
 
 function expr()
-        print(string.format("Enter %s\n", expr))
-
+        print("Enter <expr>")
         term()
 
         while nextToken == ADD_OP or nextToken == SUB_OP do
@@ -68,7 +68,7 @@ function expr()
 end
 
 function term()
-        print(string.format("Enter %s\n", term))
+        print("Enter <term>")
         factor()
         while nextToken == MULT_OP or nextToken == DIV_OP do
                 lex()
@@ -77,7 +77,7 @@ function term()
 end
 
 function factor()
-        print(string.format("Enter %s\n", factor))
+        print("Enter <factor>")
         if nextToken == IDENT or nextToken == INT_LIT then
                 lex()
         else
@@ -87,16 +87,14 @@ function factor()
                         if nextToken ==  RIGHT_PAREN then
                                 lex()
                         else
-                                print("Error")
+                                print("error")
                         end
                 else
-                        print("Error")
-
-                
+                        print("error")
                 end
         end
-        
-        print(string.format("Exit %s\n", factor))
+
+        print("Exit <factor>")
 
 end
 
@@ -104,12 +102,10 @@ end
 
 -- main loop
 function main ()
-        local f = assert(io.open(infile, "r")); -- attempts to open file, throws error if nil
         char = f:read(1);
-        while not (char == nil) do
-                lex(f);
-        end
-        f:close();
+        lex();
+        expr();
 end
 
 main();
+f:close();
