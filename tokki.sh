@@ -15,4 +15,4 @@ sudo apt install lua5.4
 # Any output to STDOUT should be directed to a text output file titled "out.txt."
 echo "Running Tokki ..."
 
-lua tokkis.lua $1 > out.txt 
+lua tokki.lua $1 > out.txt 
