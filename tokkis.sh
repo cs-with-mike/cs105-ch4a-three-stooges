@@ -17,8 +17,8 @@ echo "Running Tokki ..."
 
 lua tokkis.lua $1 > out.parser.txt 
 
-echo "FILE *************************************" 
+# echo "FILE *************************************" 
 
-cat out.parser.txt
+# cat out.parser.txt
 
-echo "END FILE *********************************"
+# echo "END FILE *********************************"
