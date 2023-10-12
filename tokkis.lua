@@ -4,7 +4,7 @@
 -- Global declarations
 -- Variables
 nextToken = ""
-local ff = arg[1]
+ff = arg[1]
 
 -- Character classes
 LETTER = 0
