@@ -127,14 +127,14 @@ function factor(depth)
                     for i = 1, depth do
                         print("<")
                     end
-                    error()
+                    return
                 end
             else
                 print("| Error - ")
                 for i = 1, depth do
                     print("<")
                 end
-                error()
+                return
             end
         end
         str = ""
