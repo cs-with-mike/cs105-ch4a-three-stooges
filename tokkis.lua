@@ -146,8 +146,13 @@ function factor(depth)
 -- main loop
 function main ()
         char = f:read(1);
+        if char == nil then
+                print("Input file is empty.")
+                return
+        end
         lex(0)
         expr(1)
+        
 end
 
 main()
