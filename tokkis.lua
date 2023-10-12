@@ -158,11 +158,9 @@ function main ()
             expr(1)
         else
             print("Error: Unable to open the file.")
-            return
         end
     else
         print("Error: No command-line argument provided.")
-        return
     end 
 end
 
