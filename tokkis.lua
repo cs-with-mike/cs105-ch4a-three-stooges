@@ -73,9 +73,7 @@ function lex(depth)
                 print(string.format("%s %s [ %s ]", str, nextToken, nextToken))
         end
     end
-    
-    -- ...
-    
+
 function expr(depth)
         local str = ""
         for i = 1, depth do
@@ -136,7 +134,7 @@ function factor(depth)
                 print("error")
             end
         end
-         str = ""
+        str = ""
         for i = 1, depth do
                 str = str .. "<"
         end
