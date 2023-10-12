@@ -31,8 +31,10 @@ function lex(depth)
         end
     
         local lexeme = ""
-
-        if char:match("%a") then -- if the next character is a letter
+    
+        if char == nil then
+            nextToken = "EOF"
+        elseif char:match("%a") then -- if the next character is a letter
             nextToken = "IDENT"
             repeat -- loop until the end of the lexeme (when the next char is not a letter or digit)
                 lexeme = lexeme .. char
@@ -55,20 +57,14 @@ function lex(depth)
             lexeme = char
             char = f:read(1)
         end
-    
+        local str = ""
+        for i = 1, depth do
+                str = str .. "="
+        end
         if nextToken ~= "EOF" then
-                local str = ""
-                for i = 1, depth do
-                        str = str .. "="
-                end
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
         else
-                local str = ""
-                for i = 1, depth do
-                        str = str .. "="
-                end
-                nextToken = "EOF"
-                print(str .. " " .. nextToken .. " [ " .. nextToken .. " ]")
+                print(str .. " " .. nextToken .. " [ " .. "EOF" .. " ]")
         end
     end
 
