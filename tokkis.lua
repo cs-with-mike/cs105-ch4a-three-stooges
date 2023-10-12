@@ -31,8 +31,8 @@ function lex(depth)
         end
     
         local lexeme = ""
-    
-        elseif char:match("%a") then -- if the next character is a letter
+
+        if char:match("%a") then -- if the next character is a letter
             nextToken = "IDENT"
             repeat -- loop until the end of the lexeme (when the next char is not a letter or digit)
                 lexeme = lexeme .. char
