@@ -129,6 +129,7 @@ function factor(depth)
                     lex(depth)
                 else
                     print("| Error - invalid tokki syntax at: ")
+                    return
                 end
             else
                 print("Error")
