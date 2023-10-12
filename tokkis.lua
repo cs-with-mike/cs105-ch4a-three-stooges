@@ -131,15 +131,15 @@ function factor(depth)
                     print("| Error - invalid tokki syntax at: " .. depth)
                     for i = 1, depth do
                         print("<")
-                        return
                     end
+                    return
                 end
             else
                 print("| Error - invalid tokki syntax at: " .. depth)
                 for i = 1, depth do
                     print("<")
-                    return
                 end
+                return
             end
         end
         str = ""
