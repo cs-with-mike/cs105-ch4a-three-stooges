@@ -135,7 +135,7 @@ function factor(depth)
                     return
                 end
             else
-                print("| Error - invalid tokki syntax at: " .. depth)
+                print("| Error - ")
                 for i = 1, depth do
                     print("<")
                 end
