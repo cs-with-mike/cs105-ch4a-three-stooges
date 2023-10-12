@@ -126,6 +126,7 @@ function factor(depth)
                     for i = 1, depth do
                         print("<")
                     end
+                    depth = 0
                     return
                 end
             else
@@ -133,6 +134,7 @@ function factor(depth)
                 for i = 1, depth do
                     print("<")
                 end
+                depth = 0
                 return
             end
         end
