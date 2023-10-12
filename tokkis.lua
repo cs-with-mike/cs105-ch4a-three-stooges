@@ -4,7 +4,8 @@
 -- Global declarations
 -- Variables
 nextToken = ""
-f = assert(io.open(arg[1], "r")); -- attempts to open file, throws error if nil
+f = assert(io.open(arg[1], "r")) -- attempts to open file, throws error if nil
+
 
 -- Character classes
 LETTER = 0
@@ -147,10 +148,23 @@ function factor(depth)
 
 -- main loop
 function main ()
-        char = f:read(1)
-        lex(0)
-        expr(1)
-        
+    if arg[1] then
+        -- Try to open the file
+        f = io.open(arg[1], "r")
+    
+        if f then
+            char = f:read(1)
+            if f 
+            lex(0)
+            expr(1)
+        else
+            print("Error: Unable to open the file.")
+            return
+        end
+    else
+        print("Error: No command-line argument provided.")
+        return
+    end 
 end
 
 main()
