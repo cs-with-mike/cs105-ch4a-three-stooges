@@ -32,8 +32,6 @@ function lex(depth)
     
         local lexeme = ""
     
-        if char == nil then
-            nextToken = "EOF"
         elseif char:match("%a") then -- if the next character is a letter
             nextToken = "IDENT"
             repeat -- loop until the end of the lexeme (when the next char is not a letter or digit)
@@ -128,7 +126,7 @@ function factor(depth)
                 if nextToken == "RIGHT_PAREN" then
                     lex(depth)
                 else
-                    print("| Error - invalid tokki syntax at: " .. lex(depth))
+                    print("| Error - invalid tokki syntax at: " .. depth)
                     for i = 1, depth do
                         print("<")
                     end
