@@ -6,12 +6,6 @@
 nextToken = ""
 f = assert(io.open(arg[1], "r")); -- attempts to open file, throws error if nil
 
-if f:read(1) == nil then
-        f:close()
-        print("Input file is empty.")
-        return
-    end
-    
 -- Character classes
 LETTER = 0
 DIGIT = 1
