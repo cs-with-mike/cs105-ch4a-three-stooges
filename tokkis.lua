@@ -4,7 +4,7 @@
 -- Global declarations
 -- Variables
 nextToken = ""
-f = assert(io.open(arg[1], "r")) -- attempts to open file, throws error if nil
+
 
 
 -- Character classes
