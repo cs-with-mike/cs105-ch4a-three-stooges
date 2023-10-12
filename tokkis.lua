@@ -154,7 +154,6 @@ function main ()
     
         if f then
             char = f:read(1)
-            if f 
             lex(0)
             expr(1)
         else
