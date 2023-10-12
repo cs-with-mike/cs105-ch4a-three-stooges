@@ -4,8 +4,7 @@
 -- Global declarations
 -- Variables
 nextToken = ""
-
-
+local ff = arg[1]
 
 -- Character classes
 LETTER = 0
@@ -148,21 +147,20 @@ function factor(depth)
 
 -- main loop
 function main ()
-    if arg[1] then
-        -- Try to open the file
-        f = io.open(arg[1], "r")
-    
-        if f then
-            char = f:read(1)
+    char = f:read(1)
             lex(0)
             expr(1)
-        else
-            print("Error: Unable to open the file.")
-        end
-    else
-        print("Error: No command-line argument provided.")
-    end 
 end
 
-main()
-f:close()
+if ff then
+    f = io.open(ff, "r")
+    if f then
+        main()
+        f:close()
+    else
+        print("Error")
+        f:close()
+    end
+else
+    print("Error")
+    f:close()
