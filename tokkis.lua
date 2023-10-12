@@ -3,7 +3,6 @@
 
 -- Global declarations
 -- Variables
-count = 0
 nextToken = ""
 f = assert(io.open(arg[1], "r")); -- attempts to open file, throws error if nil
 
@@ -23,7 +22,7 @@ lookupTable = {
         ['='] = "ASSIGN_OP",
 }
 
-function lex()
+function lex(depth)
         -- bypass whitespace
         if char == " " then
             repeat
@@ -60,10 +59,18 @@ function lex()
         end
     
         if nextToken ~= "EOF" then
-            print(string.format("%s [ %s ]", nextToken, lexeme))
+                local str = ""
+                for i = 1, depth do
+                        str = str .. "="
+                end
+                print(string.format("%s %s [ %s ]", str,  nextToken, lexeme))
         else
+                local str = ""
+                for i = 1, depth do
+                        str = str .. "="
+                end
                 nextToken = "EOF"
-                print(string.format("%s [ %s ]", nextToken, nextToken))
+                print(string.format("%s %s [ %s ]", str, nextToken, nextToken))
         end
     end
     
@@ -74,11 +81,11 @@ function expr(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        print(str, "expr")
+        print(string.format("%s expr", str))
         term(depth + 1)
     
         while nextToken == "ADD_OP" or nextToken == "SUB_OP" do
-            lex()
+            lex(depth)
             term(depth + 1)
         end
         
@@ -86,7 +93,7 @@ function expr(depth)
         for i = 1, depth do
                 str = str .. "<"
         end
-        print(str, "expr")
+        print(string.format("%s expr", str))
     end
     
 function term(depth)
@@ -94,10 +101,10 @@ function term(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        print(str, "term")
+        print(string.format("%s term", str))
         factor(depth + 1)
         while nextToken == "MULT_OP" or nextToken == "DIV_OP" do
-            lex()
+            lex(depth)
             factor(depth + 1)
         end
 
@@ -105,7 +112,7 @@ function term(depth)
         for i = 1, depth do
                 str = str .. "<"
         end
-        print(str, "term")
+        print(string.format("%s term", str))
     end
     
 function factor(depth)
@@ -113,15 +120,15 @@ function factor(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        print(str, "factor")
+        print(string.format("%s factor", str))
         if nextToken == "IDENT" or nextToken == "INT_LIT" then
-            lex()
+            lex(depth)
         else
             if nextToken == "LEFT_PAREN" then
-                lex()
-                expr(depth)
+                lex(depth)
+                expr(depth + 1)
                 if nextToken == "RIGHT_PAREN" then
-                    lex()
+                    lex(depth)
                 else
                     print("error")
                 end
@@ -133,7 +140,7 @@ function factor(depth)
         for i = 1, depth do
                 str = str .. "<"
         end
-        print(str, "factor")
+        print(string.format("%s factor", str))
     end
     
 
@@ -141,7 +148,7 @@ function factor(depth)
 -- main loop
 function main ()
         char = f:read(1);
-        lex()
+        lex(0)
         expr(1)
 end
 
