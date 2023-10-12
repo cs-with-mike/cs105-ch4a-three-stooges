@@ -63,14 +63,14 @@ function lex(depth)
                 for i = 1, depth do
                         str = str .. "="
                 end
-                print(string.format("%s %s [ %s ]", str,  nextToken, lexeme))
+                print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
         else
                 local str = ""
                 for i = 1, depth do
                         str = str .. "="
                 end
                 nextToken = "EOF"
-                print(string.format("%s %s [ %s ]", str, nextToken, nextToken))
+                print(str .. " " .. nextToken .. " [ " .. nextToken .. " ]")
         end
     end
 
