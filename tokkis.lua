@@ -128,10 +128,10 @@ function factor(depth)
                 if nextToken == "RIGHT_PAREN" then
                     lex(depth)
                 else
-                    print("error1")
+                    error("")
                 end
             else
-                print("error")
+                error("")
             end
         end
         str = ""
