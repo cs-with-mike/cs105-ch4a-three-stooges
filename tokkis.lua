@@ -79,7 +79,7 @@ function expr(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        print(string.format("%s expr", str))
+        print(str .. " expr")
         term(depth + 1)
     
         while nextToken == "ADD_OP" or nextToken == "SUB_OP" do
@@ -91,7 +91,7 @@ function expr(depth)
         for i = 1, depth do
                 str = str .. "<"
         end
-        print(string.format("%s expr", str))
+        print(str .. " expr")
     end
     
 function term(depth)
@@ -99,7 +99,7 @@ function term(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        print(string.format("%s term", str))
+        print(str .. " term")
         factor(depth + 1)
         while nextToken == "MULT_OP" or nextToken == "DIV_OP" do
             lex(depth)
@@ -110,7 +110,7 @@ function term(depth)
         for i = 1, depth do
                 str = str .. "<"
         end
-        print(string.format("%s term", str))
+        print(str .. " term")
     end
     
 function factor(depth)
@@ -118,7 +118,7 @@ function factor(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        print(string.format("%s factor", str))
+        print(str .. " factor")
         if nextToken == "IDENT" or nextToken == "INT_LIT" then
             lex(depth)
         else
@@ -138,7 +138,7 @@ function factor(depth)
         for i = 1, depth do
                 str = str .. "<"
         end
-        print(string.format("%s factor", str))
+        print(str .. " factor")
     end
     
 
