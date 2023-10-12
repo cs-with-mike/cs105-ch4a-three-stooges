@@ -6,11 +6,6 @@
 nextToken = ""
 f = assert(io.open(arg[1], "r")); -- attempts to open file, throws error if nil
 
-if not f then
-        print("File not found or unable to open.")
-        return
-end
-
 -- Character classes
 LETTER = 0
 DIGIT = 1
@@ -150,12 +145,10 @@ function factor(depth)
 
 -- main loop
 function main ()
-        if char == nil then
-                print("File is empty.")
-        else
-                lex(0)
-                expr(1)
-        end
+        char = f:read(1)
+        lex(0)
+        expr(1)
+        
 end
 
 main()
