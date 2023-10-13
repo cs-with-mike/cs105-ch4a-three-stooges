@@ -5,6 +5,7 @@
 -- Variables
 nextToken = ""
 ff = arg[1]
+local running = true
 
 -- Character classes
 LETTER = 0
