@@ -152,12 +152,13 @@ function factor(depth)
 
 
 -- main loop
-function main ()
+function main()
     running = true
     char = f:read(1)
     lex(0)
     if running then
         expr(1)
+    end
 end
 
 if ff then
