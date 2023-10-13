@@ -153,7 +153,7 @@ function factor(depth)
 
 -- main loop
 function main()
-    running = true
+    local running = true
     char = f:read(1)
     lex(0)
     if running then
