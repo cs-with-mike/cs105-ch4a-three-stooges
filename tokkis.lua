@@ -117,9 +117,6 @@ function term(depth)
     end
     
 function factor(depth)
-        if running == false then
-            return  -- Exit the function if 'running' is false
-        end
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
