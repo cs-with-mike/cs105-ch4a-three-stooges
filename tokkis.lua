@@ -5,6 +5,7 @@
 -- Variables
 nextToken = ""
 ff = arg[1]
+local running = true
 
 -- Character classes
 LETTER = 0
@@ -69,6 +70,9 @@ function lex(depth)
     end
 
 function expr(depth)
+        if not running then
+            return  -- Exit the function if 'running' is false
+        end
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -89,6 +93,9 @@ function expr(depth)
     end
     
 function term(depth)
+        if not running then
+            return  -- Exit the function if 'running' is false
+        end
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -108,6 +115,9 @@ function term(depth)
     end
     
 function factor(depth)
+        if not running then
+            return  -- Exit the function if 'running' is false
+        end
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -123,11 +133,13 @@ function factor(depth)
                     lex(depth)
                 else
                     print("| Error - invalid tokki syntax at: " .. depth)
-                    main()
+                    running = false
+                    return
                 end
             else
                 print("| Error - ")
-                main()
+                running = false
+                return
             end
         end
         str = ""
