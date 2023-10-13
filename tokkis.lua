@@ -64,9 +64,11 @@ function lex(depth)
         end
         if nextToken ~= "EOF" then
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
-        else
+        elseif nextToken == "EOF" then
                 print(str .. " " .. nextToken .. " [ " .. "EOF" .. " ]")
-        end
+        else
+                return
+            end
     end
 
 function expr(depth)
