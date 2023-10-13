@@ -123,11 +123,11 @@ function factor(depth)
                     lex(depth)
                 else
                     print("| Error - invalid tokki syntax at: " .. depth)
-                    f:close()
+                    main()
                 end
             else
                 print("| Error - ")
-                f:close()
+                main()
             end
         end
         str = ""
