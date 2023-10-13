@@ -156,9 +156,7 @@ function main()
     local running = true
     char = f:read(1)
     lex(0)
-    if running then
-        expr(1)
-    end
+    expr(1)
 end
 
 if ff then
