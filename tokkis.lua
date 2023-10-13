@@ -115,7 +115,7 @@ function term(depth)
     end
     
 function factor(depth)
-        if running == false
+        if running == false then
             return  -- Exit the function if 'running' is false
         end
         local str = ""
