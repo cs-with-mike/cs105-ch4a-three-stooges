@@ -70,7 +70,7 @@ function lex(depth)
     end
 
 function expr(depth)
-        if not running then
+        if running = false then
             return  -- Exit the function if 'running' is false
         end
         local str = ""
@@ -93,7 +93,7 @@ function expr(depth)
     end
     
 function term(depth)
-        if not running then
+        if running = false then
             return  -- Exit the function if 'running' is false
         end
         local str = ""
@@ -115,7 +115,7 @@ function term(depth)
     end
     
 function factor(depth)
-        if not running then
+        if running = false
             return  -- Exit the function if 'running' is false
         end
         local str = ""
@@ -155,8 +155,9 @@ function factor(depth)
 function main ()
     running = true
     char = f:read(1)
-            lex(0)
-            expr(1)
+    lex(0)
+    if running then
+        expr(1)
 end
 
 if ff then
