@@ -5,7 +5,6 @@
 -- Variables
 nextToken = ""
 ff = arg[1]
-running = true
 
 -- Character classes
 LETTER = 0
@@ -153,6 +152,7 @@ function factor(depth)
 
 -- main loop
 function main ()
+    running = true
     char = f:read(1)
             lex(0)
             expr(1)
