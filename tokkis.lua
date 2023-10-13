@@ -70,7 +70,7 @@ function lex(depth)
     end
 
 function expr(depth)
-        if running = false then
+        if running == false then
             return  -- Exit the function if 'running' is false
         end
         local str = ""
@@ -93,7 +93,7 @@ function expr(depth)
     end
     
 function term(depth)
-        if running = false then
+        if running == false then
             return  -- Exit the function if 'running' is false
         end
         local str = ""
@@ -115,7 +115,7 @@ function term(depth)
     end
     
 function factor(depth)
-        if running = false
+        if running == false
             return  -- Exit the function if 'running' is false
         end
         local str = ""
