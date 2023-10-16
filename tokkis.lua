@@ -72,9 +72,6 @@ function lex(depth)
     end
 
 function expr(depth)
-        if running == false then
-            return  -- Exit the function if 'running' is false
-        end
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -87,6 +84,10 @@ function expr(depth)
             term(depth + 1)
         end
         
+        if running == false then
+            return  -- Exit the function if 'running' is false
+        end
+
         str = ""
         for i = 1, depth do
                 str = str .. "<"
@@ -131,14 +132,13 @@ function factor(depth)
                 if nextToken == "RIGHT_PAREN" then
                     lex(depth)
                 else
-		    error("| Error - invalid tokki syntax at: " .. depth)
-		    -- print("| Error - invalid tokki syntax at: " .. depth)
+		    print("| Error - invalid tokki syntax at: " .. depth)
                     running = false
                     return
                 end
             else
                 print("| Error - invalid tokki syntax at: ")
-		running = false
+		os.exit(-1)
                 return
             end
         end
