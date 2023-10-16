@@ -121,6 +121,9 @@ function factor(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
+        if running == false then
+            return  -- Exit the function if 'running' is false
+        end
         print(str .. " factor")
         if nextToken == "IDENT" or nextToken == "INT_LIT" then
             lex(depth)
