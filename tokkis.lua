@@ -7,7 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-lastChar
+lastChar = ""
 
 -- Character classes
 LETTER = 0
@@ -64,9 +64,9 @@ function lex(depth)
         for i = 1, depth do
                 str = str .. "="
         end
-        lastChar = lexeme:sub(-1)
         if nextToken ~= "EOF" then
                 parseCount = parseCount + 1
+                lastChar = lexeme:sub(-1)
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
         elseif nextToken == "EOF" then
                 print(str .. " " .. nextToken .. " [ " .. "EOF" .. " ]")
