@@ -6,6 +6,7 @@
 nextToken = ""
 ff = arg[1]
 running = true
+parseCount = 0
 
 -- Character classes
 LETTER = 0
@@ -72,6 +73,7 @@ function lex(depth)
     end
 
 function expr(depth)
+    parseCount = parseCount + 1
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -133,7 +135,7 @@ function factor(depth)
                 elseif running == false then
                     return
                 else
-		            print("Error - invalid tokki syntax at: " .. depth)
+		            print("Error - invalid tokki syntax at: " .. parseCount)
                     running = false
                     return
                 end
