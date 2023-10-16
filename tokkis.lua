@@ -7,7 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-local lexeme
+lexeme
 
 -- Character classes
 LETTER = 0
@@ -137,7 +137,7 @@ function factor(depth)
                     return
                 else
                     local finalChar = lexeme:sub(-1)
-		            print("Error - invalid tokki syntax at: " .. finalChar)
+		            print("| Error - invalid tokki syntax at: " .. finalChar)
                     running = false
                     return
                 end
