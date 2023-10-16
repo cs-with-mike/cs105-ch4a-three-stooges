@@ -33,6 +33,7 @@ function lex(depth)
             until not (char == " ")
         end
     
+        lexeme = ""
 
         if char == nil then
             nextToken = "EOF"
@@ -136,7 +137,7 @@ function factor(depth)
                     return
                 else
                     local finalChar = lexeme:sub(-1)
-		            print("Error - invalid tokki syntax at: " .. finalChar)
+		            print("| Error - invalid tokki syntax at: " .. finalChar)
                     running = false
                     return
                 end
