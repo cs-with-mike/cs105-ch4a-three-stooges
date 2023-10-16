@@ -7,6 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
+local lexeme
 
 -- Character classes
 LETTER = 0
@@ -32,7 +33,7 @@ function lex(depth)
             until not (char == " ")
         end
     
-        local lexeme = ""
+        lexeme = ""
 
         if char == nil then
             nextToken = "EOF"
@@ -118,7 +119,7 @@ function term(depth)
         print(str .. " term")
     end
     
-function factor(depth, lexeme)
+function factor(depth)
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
