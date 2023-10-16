@@ -131,13 +131,14 @@ function factor(depth)
                 if nextToken == "RIGHT_PAREN" then
                     lex(depth)
                 else
-                    print("| Error - invalid tokki syntax at: " .. depth)
+		    error("| Error - invalid tokki syntax at: " .. depth)
+		    -- print("| Error - invalid tokki syntax at: " .. depth)
                     running = false
                     return
                 end
             else
-                print("| Error - ")
-                running = false
+                print("| Error - invalid tokki syntax at: ")
+                do return end
                 return
             end
         end
