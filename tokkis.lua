@@ -130,9 +130,11 @@ function factor(depth)
             lex(depth)
         else
             if nextToken == "LEFT_PAREN" then
+                parseCount = parseCount + 1
                 lex(depth)
                 expr(depth + 1)
                 if nextToken == "RIGHT_PAREN" then
+                    parseCount = parseCount + 1
                     lex(depth)
                 elseif running == false then
                     return
