@@ -7,7 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-lexeme = ""
+lexeme
 
 -- Character classes
 LETTER = 0
