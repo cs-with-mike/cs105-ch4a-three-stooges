@@ -6,7 +6,7 @@
 nextToken = ""
 ff = arg[1]
 running = true
-parseCount = 0
+parseCount = -1
 
 -- Character classes
 LETTER = 0
@@ -135,7 +135,7 @@ function factor(depth)
                 elseif running == false then
                     return
                 else
-		            print("Error - invalid tokki syntax at: " .. parseCount)
+		            print("Error - invalid tokki syntax at: " .. parseCount - 1)
                     running = false
                     return
                 end
