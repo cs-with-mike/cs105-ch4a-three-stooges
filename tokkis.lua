@@ -7,7 +7,6 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-lexeme = ""
 
 -- Character classes
 LETTER = 0
@@ -33,7 +32,8 @@ function lex(depth)
             until not (char == " ")
         end
     
-    
+        local lexeme = ""
+
         if char == nil then
             nextToken = "EOF"
         elseif char:match("%a") then -- if the next character is a letter
