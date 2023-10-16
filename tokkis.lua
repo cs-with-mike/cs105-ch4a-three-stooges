@@ -7,7 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-lexeme
+lexeme = ""
 
 -- Character classes
 LETTER = 0
@@ -33,7 +33,6 @@ function lex(depth)
             until not (char == " ")
         end
     
-        lexeme = ""
 
         if char == nil then
             nextToken = "EOF"
