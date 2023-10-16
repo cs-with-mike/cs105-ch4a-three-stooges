@@ -43,14 +43,14 @@ function lex(depth)
                 if char == nil then
                     break
                 end
-            until not (char:match("%a") or char:match("%d"))
+            until not (char:match("%a"))
         elseif char:match("%d") then -- if the next character is a digit
             nextToken = "INT_LIT"
             repeat -- loop until the end of the lexeme (when the next character is not a digit)
                 lexeme = lexeme .. char
                 char = f:read(1)
                 if char == nil then
-		    nextToken = "EOF"
+		            nextToken = "EOF"
                     break
                 end
             until not (char:match("%d"))
