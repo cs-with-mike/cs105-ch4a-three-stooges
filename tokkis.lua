@@ -50,6 +50,7 @@ function lex(depth)
                 lexeme = lexeme .. char
                 char = f:read(1)
                 if char == nil then
+		    nextToken = "EOF"
                     break
                 end
             until not (char:match("%d"))
@@ -58,14 +59,15 @@ function lex(depth)
             lexeme = char
             char = f:read(1)
         end
+
         local str = ""
         for i = 1, depth do
                 str = str .. "="
         end
-        if nextToken ~= "EOF" then
+        if nextToken ~= "EOF" and nextToken ~= nil then
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
-        elseif nextToken == "EOF" then
-                print(str .. " " .. nextToken .. " [ " .. "EOF" .. " ]")
+        elseif nextToken == "EOF" or nextToken == nil then
+                print(str .. " " .. "EOF" .. " [ " .. "EOF" .. " ]")
         else
                 return
             end
@@ -121,9 +123,6 @@ function factor(depth)
         for i = 1, depth do
                 str = str .. ">"
         end
-        if running == false then
-            return  -- Exit the function if 'running' is false
-        end
         print(str .. " factor")
         if nextToken == "IDENT" or nextToken == "INT_LIT" then
             lex(depth)
@@ -143,6 +142,9 @@ function factor(depth)
 		running = false
                 return
             end
+        end
+        if running == false then
+            return  -- Exit the function if 'running' is false
         end
         str = ""
         for i = 1, depth do
@@ -173,4 +175,3 @@ else
     print("Error")
     f:close()
 end
-
