@@ -136,7 +136,7 @@ function factor(depth)
                     return
                 else
                     local finalChar = lexeme:sub(-1)
-		            print("| Error - invalid tokki syntax at: " .. finalChar)
+		            print("Error - invalid tokki syntax at: " .. finalChar)
                     running = false
                     return
                 end
