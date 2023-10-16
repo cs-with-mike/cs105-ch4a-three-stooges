@@ -133,14 +133,14 @@ function factor(depth)
                 elseif running == false then
                     return
                 else
-		            print("Error - invalid tokki syntax at: " .. depth)
+		            error("Error - invalid tokki syntax at: " .. depth)
                     running = false
                     return
                 end
             elseif running == false then
                 return
             else
-                print("Error - invalid tokki syntax at:")
+                error("| Error - invalid tokki syntax at:")
 		        running = false
                 return
             end
