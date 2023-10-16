@@ -73,7 +73,6 @@ function lex(depth)
     end
 
 function expr(depth)
-    parseCount = parseCount + 1
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -82,6 +81,7 @@ function expr(depth)
         term(depth + 1)
     
         while nextToken == "ADD_OP" or nextToken == "SUB_OP" do
+            parseCount = parseCount + 1
             lex(depth)
             term(depth + 1)
         end
@@ -104,6 +104,7 @@ function term(depth)
         print(str .. " term")
         factor(depth + 1)
         while nextToken == "MULT_OP" or nextToken == "DIV_OP" do
+            parseCount = parseCount + 1
             lex(depth)
             factor(depth + 1)
         end
@@ -125,6 +126,7 @@ function factor(depth)
         end
         print(str .. " factor")
         if nextToken == "IDENT" or nextToken == "INT_LIT" then
+            parseCount = parseCount + 1
             lex(depth)
         else
             if nextToken == "LEFT_PAREN" then
