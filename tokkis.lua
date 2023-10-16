@@ -7,7 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-lexeme
+lastChar
 
 -- Character classes
 LETTER = 0
@@ -64,6 +64,7 @@ function lex(depth)
         for i = 1, depth do
                 str = str .. "="
         end
+        lastChar = lexeme:sub(-1)
         if nextToken ~= "EOF" then
                 parseCount = parseCount + 1
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
@@ -136,8 +137,7 @@ function factor(depth)
                 elseif running == false then
                     return
                 else
-                    local finalChar = lexeme:sub(-1)
-		            print("| Error - invalid tokki syntax at: " .. finalChar)
+		            print("| Error - invalid tokki syntax at: " .. lastChar)
                     running = false
                     return
                 end
