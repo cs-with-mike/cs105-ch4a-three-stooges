@@ -136,7 +136,7 @@ function factor(depth)
                     return
                 end
             else
-                print("| Error - invalid tokki syntax at: ")
+                print("| Error - invalid tokki syntax at:")
 		running = false
                 return
             end
