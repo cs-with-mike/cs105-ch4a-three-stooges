@@ -95,9 +95,6 @@ function expr(depth)
     end
     
 function term(depth)
-        if running == false then
-            return  -- Exit the function if 'running' is false
-        end
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
@@ -109,6 +106,9 @@ function term(depth)
             factor(depth + 1)
         end
 
+        if running == false then
+            return  -- Exit the function if 'running' is false
+        end
         local str = ""
         for i = 1, depth do
                 str = str .. "<"
@@ -138,7 +138,7 @@ function factor(depth)
                 end
             else
                 print("| Error - invalid tokki syntax at: ")
-		os.exit(-1)
+		running = false
                 return
             end
         end
