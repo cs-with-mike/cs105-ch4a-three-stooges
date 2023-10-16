@@ -26,7 +26,6 @@ lookupTable = {
 
 function lex(depth)
         -- bypass whitespace
-        parseCount = parseCount + 1
         if char == " " then
             repeat
                 char = f:read(1)
@@ -65,6 +64,7 @@ function lex(depth)
                 str = str .. "="
         end
         if nextToken ~= "EOF" then
+                parseCount = parseCount + 1
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
         elseif nextToken == "EOF" then
                 print(str .. " " .. nextToken .. " [ " .. "EOF" .. " ]")
