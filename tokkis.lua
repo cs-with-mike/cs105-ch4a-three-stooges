@@ -138,7 +138,7 @@ function factor(depth)
                 end
             else
                 print("| Error - invalid tokki syntax at: ")
-                do return end
+		goto exit
                 return
             end
         end
@@ -171,3 +171,5 @@ else
     print("Error")
     f:close()
 end
+
+::exit::
