@@ -9,7 +9,7 @@
 echo "Setting up runtime ..."
 
 # I'm checking Python interpreter's version here just as a placeholder.
-sudo apt install lua5.3
+sudo apt install lua5.4
 
 # Run your Tokki lexer, passing in the first command line argument directly to the lexer.
 # Any output to STDOUT should be directed to a text output file titled "out.txt."
