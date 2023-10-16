@@ -50,7 +50,6 @@ function lex(depth)
                 lexeme = lexeme .. char
                 char = f:read(1)
                 if char == nil then
-		            nextToken = "EOF"
                     break
                 end
             until not (char:match("%d"))
@@ -59,15 +58,14 @@ function lex(depth)
             lexeme = char
             char = f:read(1)
         end
-
         local str = ""
         for i = 1, depth do
                 str = str .. "="
         end
-        if nextToken ~= "EOF" and nextToken ~= nil then
+        if nextToken ~= "EOF" then
                 print(str .. " " .. nextToken .. " [ " .. lexeme .. " ]")
-        elseif nextToken == "EOF" or nextToken == nil then
-                print(str .. " " .. "EOF" .. " [ " .. "EOF" .. " ]")
+        elseif nextToken == "EOF" then
+                print(str .. " " .. nextToken .. " [ " .. "EOF" .. " ]")
         else
                 return
             end
@@ -133,13 +131,13 @@ function factor(depth)
                 if nextToken == "RIGHT_PAREN" then
                     lex(depth)
                 else
-		        print("Error - invalid tokki syntax at: " .. depth)
+		    print("Error - invalid tokki syntax at: " .. depth)
                     running = false
                     return
                 end
             else
                 print("Error - invalid tokki syntax at:")
-		        running = false
+		running = false
                 return
             end
         end
