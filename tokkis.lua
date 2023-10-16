@@ -118,7 +118,7 @@ function term(depth)
         print(str .. " term")
     end
     
-function factor(depth)
+function factor(depth, lexeme)
         local str = ""
         for i = 1, depth do
                 str = str .. ">"
