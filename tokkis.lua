@@ -7,7 +7,7 @@ nextToken = ""
 ff = arg[1]
 running = true
 parseCount = -1
-local lastChar = ""
+lastChar = ""
 
 -- Character classes
 LETTER = 0
@@ -140,7 +140,7 @@ function factor(depth)
                     if tonumber(lastChar) then
                         lastChar = tonumber(lastChar)
                     end
-		            print("| Error - invalid tokki syntax at: " .. lastChar)
+		            print("| Error - invalid tokki syntax at: " .. lastChar + 1 - 1)
                     running = false
                     return
                 end
