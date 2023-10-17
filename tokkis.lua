@@ -140,7 +140,7 @@ function factor(depth)
                     if tonumber(lastChar) then
                         lastChar = tonumber(lastChar)
                     end
-		            print("| Error - invalid tokki syntax at: " .. lastChar + 1 - 1)
+		            print("Error - invalid tokki syntax at:" .. lastChar)
                     running = false
                     return
                 end
