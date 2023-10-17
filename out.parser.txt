@@ -1,0 +1,5 @@
+ EOF [ EOF ]
+> expr
+>> term
+>>> factor
+| Error - invalid tokki syntax at: 
